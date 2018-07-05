@@ -102,7 +102,7 @@ class Redis implements Adapter
             }
             $this->redis->setOption(\Redis::OPT_READ_TIMEOUT, $this->options['read_timeout']);
 	    if (isset($this->options['db_namespace'])) {
-		$this->redis->select($this->option['db_namespace']);
+		$this->redis->select($this->options['db_namespace']);
 	    }
         } catch (\RedisException $e) {
             throw new StorageException("Can't connect to Redis server", 0, $e);
