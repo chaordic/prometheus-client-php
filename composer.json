@@ -1,13 +1,9 @@
 {
-    "name": "jimdo/prometheus_client_php",
+    "name": "chaordic/prometheus-client-php",
     "authors": [
         {
-            "name": "Joscha",
-            "email": "joscha@schnipseljagd.org"
-        },
-        {
-            "name": "Jan Brauer",
-            "email": "jan.brauer@jimdo.com"
+            "name": "Vinicius Ferreira",
+            "email": "vinicius.ferreira@linx.com.br"
         }
     ],
     "require": {
