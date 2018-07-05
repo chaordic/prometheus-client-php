@@ -51,7 +51,10 @@ class Redis implements Adapter
      */
     public static function setDefaultOptions(array $options)
     {
-        self::$defaultOptions = array_merge(self::$defaultOptions, $options);
+        if (isset($options['db_namespace'])) {
+	    $options['db_namespace'] = (int) $options['db_namespace'];
+	}
+	self::$defaultOptions = array_merge(self::$defaultOptions, $options);
     }
 
     public static function setPrefix($prefix)
@@ -98,6 +101,9 @@ class Redis implements Adapter
                 $this->redis->auth($this->options['password']);
             }
             $this->redis->setOption(\Redis::OPT_READ_TIMEOUT, $this->options['read_timeout']);
+	    if (isset($this->options['db_namespace'])) {
+		$this->redis->select($this->option['db_namespace']);
+	    }
         } catch (\RedisException $e) {
             throw new StorageException("Can't connect to Redis server", 0, $e);
         }
